@@ -1,0 +1,31 @@
+<script>
+
+var a = [];
+var n = 100;
+
+for (var i=0; i <= n; i++) {
+    a.push(i)
+}
+
+a[0] = 0;
+a[1] = 0;
+var m = 2;
+while (m < n) {
+    if (a[m] != 0) {
+        j = m * 2;
+        while (j < n) {
+            a[j] = 0;
+            j += m;
+        }
+    };
+    m += 1;
+}
+var b = [];
+for (i in a) {
+    if (a[i] != 0) {
+        b.push(a[i])
+    }
+}
+console.log(b)
+
+</script>

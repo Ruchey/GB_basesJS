@@ -1,0 +1,38 @@
+<script>
+    function countBasketPrice(basket) {
+        var prod = "";
+        var price = 0;
+        for (b in basket) {
+            prod += "<p>" + basket[b].name + "___" + basket[b].price + "руб. - " + basket[b].cnt + "шт<\p>";
+            price += basket[b].price * basket[b].cnt;
+        }
+        prod += "<hr>";
+        prod += "<p>Итого: " + price + "</p>";
+        document.write(prod);
+    }
+
+    var basket_1 = [
+    {
+        name: "Шарф",
+        price: 650,
+        cnt: 1
+    },
+    {
+        name: "Шапка",
+        price: 1200,
+        cnt: 1
+    },
+    {
+        name: "Носки",
+        price: 150,
+        cnt: 3
+    },
+    {
+        name: "Майка белая",
+        price: 100,
+        cnt: 2
+    },
+    ]
+    countBasketPrice(basket_1);
+    
+</script>
