@@ -13,17 +13,21 @@
           prompt('Вы ввели не число. \nВведите чило от 0 до 999: ')
         )
       }
-      var hundreds = num - (num % 100)
-      var units = num % 10
-      var tens = num - hundreds - units
-      var num_obj = {
-        hundreds: hundreds,
-        tens: tens,
-        units: units,
+      if (num < 1000 && num > 0) {
+        var hundreds = num - (num % 100)
+        var units = num % 10
+        var tens = num - hundreds - units
+        var num_obj = {
+          hundreds: hundreds,
+          tens: tens,
+          units: units,
+        }
+        alert(
+          `Создан объект num_obj. Искходное число: ${num}\nСотни: ${num_obj.hundreds}\nДеястки: ${num_obj.tens}\nЕдиницы: ${num_obj.units}`
+        )
+      } else {
+        console.log('Число не входит в диапазон от 0 до 999')
       }
-      alert(
-        `Создан объект num_obj. Искходное число: ${num}\nСотни: ${num_obj.hundreds}\nДеястки: ${num_obj.tens}\nЕдиницы: ${num_obj.units}`
-      )
     </script>
   </body>
 </html>
