@@ -1,122 +1,36 @@
-var event, ok;
+var q, vr, endVar, num, event, vrTxt
 
-do {//Выводим первый вопрос
-    ok = false;
-    event = +prompt(works.a00 + works.a1 + works.a2 + '-1 - Выход из игры');
-    if (event == -1) {
-        break;
-    }
-    else {
-        ok = isAnswer(works.a0, event);
-    }
-} while (!ok);
-switch (event) {
-    case 1: // Первое действие  - если в первом окне ввели 1 то открываем серию окон - окно 2
-        do {
-            ok = false;
-            event = +prompt(works.b00 + works.b1 + works.b2 + '-1 - Выход из игры');
-            if (event == -1) {
-                break;
-            }
-            else {
-                ok = isAnswer(works.b0, event);
-            }
-        } while (!ok);
-        switch (event) {
-            case 1: // Второе действие, если во 2 окне ввели 1 то переходим на 4 окно
-                do {
-                    ok = false;
-                    event = +prompt(works.d00 + works.d1 + works.d2 + '-1 - Выход из игры');
-                    if (event == -1) {
-                        break;
-                    }
-                    else {
-                        ok = isAnswer(works.d0, event);
-                    }
-                } while (!ok);
+var endGame = false
+var wk = work1
+var course = 0
+var userVr = []
 
-                break;
-            case 2: // Второе действие   Если ввели 2 то также переходим на 4 окно
-                do {
-                    ok = false;
-                    event = +prompt(works.d00 + works.d1 + works.d2 + '-1 - Выход из игры');
-                    if (event == -1) {
-                        break;
-                    }
-                    else {
-                        ok = isAnswer(works.d0, event);
-                    }
-                } while (!ok);
-
-                break;
-            case -1: // Второе действие
-                break;
-            default:
-                alert('Ошибка');
-        }
-        break;
-    case 2: // Первое действие    Если в 1 окне ввели 2 то переходим к 3 окну
-        do {
-            ok = false;
-            event = +prompt(works.c00 + works.c1 + works.c2 + '-1 - Выход из игры');
-            if (event == -1) {
-                break;
-            }
-            else {
-                ok = isAnswer(works.c0, event);
-            }
-        } while (!ok);
-        switch (event) {
-            case 1: // Второе действие
-                do {
-                    ok = false;
-                    event = +prompt(works.d00 + works.d1 + works.d2 + '-1 - Выход из игры');
-                    if (event == -1) {
-                        break;
-                    }
-                    else {
-                        ok = isAnswer(works.d0, event);
-                    }
-                } while (!ok);
-
-                break;
-            case 2: // Второе действие
-                do {
-                    ok = false;
-                    event = +prompt(works.d00 + works.d1 + works.d2 + '-1 - Выход из игры');
-                    if (event == -1) {
-                        break;
-                    }
-                    else {
-                        ok = isAnswer(works.d0, event);
-                    }
-                } while (!ok);
-
-                break;
-            case -1: // Второе действие
-                break;
-            default:
-                alert('Ошибка');
-        }
-        break;
-    case -1: // Первое действие
-        break;
-    default:
-        alert('Ошибка');
-}
-alert('Спасибо за игру');
-
-//------------------------------------------
-function isAnswer(q, event) {
-    if (isNaN(event) || !isFinite(event)) {
-        alert('Вы ввели недопустимый символ');
-        return false;
-    }
-    else if (event < 1 || event > q) {
-        alert('Ваше число выходит из допустимого диапозона');
-        return false;
-    }
-	return true;
-    
+while (!endGame) {
+  vr = wk.variants
+  vrTxt = ''
+  endVar = wk.endVar
+  if (endVar) {
+    finish(wk.txt)
+    break
+  }
+  num = vr.length
+  for (i in vr) {
+    vrTxt += `${parseInt(i) + 1} -- ${vr[i].vr}\n`
+  }
+  q = `${wk.txt}\n${vrTxt}`
+  event = +prompt(q + '-1 - Выход из игры')
+  if (event > num || event < -1) {
+    continue
+  } else if (event == -1) {
+    endGame = true
+  } else {
+    wk = eval(vr[event - 1].work)
+    userVr[course] = vr[event - 1].vr
+    course++
+  }
 }
 
+function finish(txt) {
+  var userCourse = +prompt(`${txt}\nот 1 до ${course}`)
+  alert(`Ваш ход №${course} с выбором: ${userVr[userCourse - 1]}`)
+}
