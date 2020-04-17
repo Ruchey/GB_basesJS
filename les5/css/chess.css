@@ -1,0 +1,47 @@
+table {
+  border: none;
+  border-spacing: 0;
+  border-collapse: collapse;
+  text-align: center;
+  margin: 0 auto;
+}
+td {
+  border: none;
+  height: 80px;
+  width: 80px;
+  font-size: 3.5rem;
+}
+td:hover {
+  color: rgb(255, 136, 0);
+  cursor: pointer;
+}
+th {
+  padding: 0.2rem;
+}
+.chess-black {
+  background-color: gray;
+}
+.chess-white {
+  background-color: white;
+}
+.cage-left {
+  border-left: 4px solid;
+}
+.cage-right {
+  border-right: 4px solid;
+}
+.cage-top {
+  border-top: 4px solid;
+}
+.cage-bottom {
+  border-bottom: 4px solid;
+}
+.cage-left,
+.cage-right,
+.cage-top,
+.cage-bottom {
+  border-color: grey;
+}
+.invert {
+  transform: rotate(180deg);
+}
