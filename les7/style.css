@@ -1,0 +1,30 @@
+table {
+  border-collapse: collapse;
+}
+td {
+  width: 30px;
+  height: 30px;
+  background-color: #262626;
+  border: 1px solid #969696;
+  color: aqua;
+}
+.snake-body {
+  background-color: #fff;
+}
+.food {
+  background-color: #0f0;
+}
+.obstacles {
+  background-color: rgb(174, 0, 180);
+}
+.blink1 {
+  animation-name: blink;
+  animation-timing-function: linear;
+  animation-duration: 0.3s;
+  animation-iteration-count: infinite;
+}
+@keyframes blink {
+  50% {
+    background-color: red;
+  }
+}
